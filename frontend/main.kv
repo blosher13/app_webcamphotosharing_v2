@@ -1,0 +1,24 @@
+<FirstScreen>:
+    GridLayouts:
+        cols: 1
+        padding: 10
+        spacing: 10
+    WebcamPhoto:
+        id: wc_photo
+        size_hint_y: .80
+    TextInput:
+        id: search_query
+        size_hint_y: .10
+    Button:
+        id: button
+        text: 'Take Photo'
+        size_hint_y: .10
+        on_release: root.search_image()
+<SecondScreen>:
+<RootWidget>:
+    FirstScreen
+        id: first_screen
+        name: 'first_screen'
+    SecondScreen
+        id: second_screen
+        name: 'second_screen'

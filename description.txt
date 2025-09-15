@@ -1,0 +1,17 @@
+Title: Webcam photo app
+Description:
+- start the webcam
+- take a photo
+- create a link
+- share that link or open that link that takes you to the photo
+Objects:
+StartWebcam?
+    startwebcam()
+    endwebcam()
+    takephoto()
+TakePhoto?
+
+Link?
+    filepath
+    api
+    share()
