@@ -1,24 +1,61 @@
-<FirstScreen>:
-    GridLayouts:
+<CameraScreen>:
+    GridLayout:
         cols: 1
         padding: 10
         spacing: 10
-    WebcamPhoto:
-        id: wc_photo
-        size_hint_y: .80
-    TextInput:
-        id: search_query
-        size_hint_y: .10
-    Button:
-        id: button
-        text: 'Take Photo'
-        size_hint_y: .10
-        on_release: root.search_image()
-<SecondScreen>:
+        Camera:
+            id: webcam
+            resolution: (1000, 800)
+            size_hint_y: .80
+            play: False
+            opacity: 0
+        Button:
+            id: webcam_button
+            text: 'Start Webcam'
+            size_hint_y: .10
+            on_release: root.start() if root.ids.webcam.play == False else root.end()
+        Button:
+            id: capture
+            text: 'Take Photo'
+            size_hint_y: .10
+            on_release: root.capture()
+<ImageScreen>:
+    GridLayout:
+        cols: 1
+        Image:
+            id: img
+            size_hint_y: .80
+        Button:
+            text: 'Create sharable link'
+            size_hint_y: .05
+            on_release: root.create_link()
+        Label:
+            id: url_link
+            text: 'link text'
+            size_hint_y: .05
+        GridLayout:
+            cols: 2
+            padding: 10
+            spacing: 10
+            size_hint_y: .10
+            Button:
+                text: 'Copy Link'
+                size_hint_y: .50
+                on_release: root.copy_link()
+            Button:
+                text: 'Open Link'
+                size_hint_y: .50
+                on_release: root.open_link()
 <RootWidget>:
-    FirstScreen
-        id: first_screen
-        name: 'first_screen'
-    SecondScreen
-        id: second_screen
-        name: 'second_screen'
+    canvas.before:
+        Color:
+            rgba: (0.3, 0.2, 0.1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    CameraScreen
+        id: camera_screen
+        name: 'camera_screen'
+    ImageScreen
+        id: image_screen
+        name: 'image_screen'
